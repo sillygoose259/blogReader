@@ -35,5 +35,7 @@ public class blog_activity extends Activity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayStrings);
         listView.setAdapter(adapter);
+
+        new BlogPostTask().execute();
     }
 }

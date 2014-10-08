@@ -15,14 +15,14 @@ public class BlogPostTask extends AsyncTask<Activity, Void, JSONObject>{
     @Override
     protected JSONObject doInBackground(Activity... params) {
         try {
-            URL blogFeedURL = new URL("http://blog.teamtreehouse.com/api/get_recent_summary/?count=10");
+            URL blogFeedURL = new URL("http://blogs.teamtreehouse.com/api/get_recent_summary/?count=10");
 
             HttpURLConnection connection = (HttpURLConnection)blogFeedURL.openConnection();
             connection.connect();
             int responseCode = connection.getResponseCode();
 
-            if(responseCode) == HttpURLConnection.HTTP_OK) {
-                
+            if(responseCode == HttpURLConnection.HTTP_OK) {
+                Log.i("BlogPostTask", "Successful Connection" + responseCode);
             }
 
         }
