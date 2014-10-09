@@ -1,5 +1,10 @@
 package android.baltazarg.blog_reader;
-    public class BlogPostParser {
+
+import org.json.JSONObject;
+
+import java.io.InputStream;
+
+public class BlogPostParser {
         private static BlogPostParser parser;
 
         private BlogPostParser() {
@@ -10,5 +15,9 @@ package android.baltazarg.blog_reader;
                 parser = new BlogPostParser();
             }
             return parser;
+        }
+
+        public JSONObject parse(InputStream inputStream) {
+               return null;
         }
 }
