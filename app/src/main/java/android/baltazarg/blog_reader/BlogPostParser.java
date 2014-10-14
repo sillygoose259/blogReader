@@ -2,6 +2,7 @@ package android.baltazarg.blog_reader;
 
 import android.util.Log;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -40,10 +41,12 @@ public class BlogPostParser {
                 catch(IOException error) {
                     Log.e("BlogPostParser", "IOException:" + error);
                 }
-            catch(JSONObject error) {
+            catch(JSONException error) {
                 Log.e("BlogPostParser", "JSON Exception:" + error);
 
             }
+
+
 
             return jsonObject;
         }

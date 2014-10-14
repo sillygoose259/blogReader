@@ -14,6 +14,7 @@ import java.net.URL;
 public class BlogPostTask extends AsyncTask<Activity, Void, JSONObject>{
     @Override
     protected JSONObject doInBackground(Activity... params) {
+        JSONObject jsonObject = null;
         try {
             URL blogFeedURL = new URL("http://blogs.teamtreehouse.com/api/get_recent_summary/?count=10");
 
@@ -23,7 +24,7 @@ public class BlogPostTask extends AsyncTask<Activity, Void, JSONObject>{
 
             if(responseCode == HttpURLConnection.HTTP_OK) {
                 Log.i("BlogPostTask", "Successful Connection" + responseCode);
-                BlogPostParser.get().parse(connection.getInputStream());
+                jsonObject = BlogPostParser.get().parse(connection.getInputStream());
             }
 
         }
@@ -34,6 +35,11 @@ public class BlogPostTask extends AsyncTask<Activity, Void, JSONObject>{
         catch(IOException error) {
             Log.e("BlogPostTask", " IO Exception:" + error);
         }
-        return null;
+        return jsonObject;
+    }
+
+    @Override
+    protected void onPostExecute(JSONObject jsonObject) {
+        super.onPostExecute(jsonObject);
     }
 }
