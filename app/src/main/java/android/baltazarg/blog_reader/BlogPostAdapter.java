@@ -1,6 +1,7 @@
 package android.baltazarg.blog_reader;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -17,5 +18,9 @@ public class BlogPostAdapter extends ArrayAdapter<BlogPost>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         BlogPost post = getItem(position);
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        }
     }
 }
