@@ -1,6 +1,8 @@
 package android.baltazarg.blog_reader;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +36,12 @@ public class blog_activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("BlogActivity", "Title:" + BlogPostParser.get().posts.get(position));
+
+                Intent intent = new Intent(getApplicationContext(), BlogWebActivity.class);
+                Uri blogUri = Uri.parse(BlogPostParser.get().posts.get(position).url);
+                intent.setData(blogUri);
+
+                startActivity(intent);
             }
         });
 
